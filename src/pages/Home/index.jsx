@@ -24,12 +24,8 @@ const Home = () => {
       <h3 className="text-gray-400 mt-2">The most delicious snacks are available here. Transactions are fast, safe and reliable.Get it soon !</h3>
       <div className='w-full flex flex-wrap justify-evenly gap-y-12 mt-8'>
         {
-          products?.map((item, index) => (
-            
+          products?.map((item, index) => (            
             <Card data={item} key={index} />
-            // <div key={index}>
-            //   <p className='text-white'>{item.title}</p>
-            // </div>
           ))
         }
       </div>
