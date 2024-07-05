@@ -12,7 +12,7 @@
       "id": "2",
       "title": "Qtela Barbeque",
       "weight": "60gr",
-      "stock": 8,
+      "stock": 5,
       "price": 8000,
       "img_url": "https://res.cloudinary.com/dzpf9unc5/image/upload/v1719933734/jsm/qtela_ys0ytq.webp"
     },
@@ -20,7 +20,7 @@
       "id": "3",
       "title": "Oreo Ice Cream",
       "weight": "133gr",
-      "stock": 8,
+      "stock": 6,
       "price": 10000,
       "img_url": "https://res.cloudinary.com/dzpf9unc5/image/upload/v1719934590/jsm/oreo_j9btpp.webp"
     },
