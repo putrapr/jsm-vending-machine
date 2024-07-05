@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import api from '../../config/api'
 import Swal from 'sweetalert2'
 
-const Order = () => {
+const Payment = () => {
   const { id } = useParams()
   const [product, setProduct] = useState({})
   const [moneys, setMoneys] = useState([])
@@ -42,9 +42,11 @@ const Order = () => {
       const data = { stock: response.data.stock - 1 }           
       api.patch('/product/'+id, data)
 
+      const change = totalMoney - product.price
       Swal.fire({
         icon: 'success',
         title: 'Payment Successful',
+        text: 'Your money back: Rp.'+ change
       })
       navigate('/')
     }
@@ -69,7 +71,7 @@ const Order = () => {
         </div>
       </div>
       <div className='w-96 border p-6 bg-gray-800 bg-opacity-90'>
-        <h1 className='text-2xl text-white'>Pay with fractions of money</h1>
+        <h1 className='text-2xl text-white'>Pay with fractions of money (Rp.)</h1>
         <div className='w-full mt-6 flex flex-wrap gap-4'>
           <button type='button' className='w-24 h-12 border rounded-md text-white hover:bg-gray-600 active:ring-4 active:ring-gray-600'
             onClick={() => setMoneys([...moneys, 2000])}>2000</button>
@@ -98,7 +100,7 @@ const Order = () => {
         </div>
         
         <div className='mt-4'>
-          <h3 className='text-white'>My amount of money: {totalMoney}</h3>
+          <h3 className='text-white'>My amount of money: Rp.{totalMoney}</h3>
         </div>
         <div className='w-full flex justify-center mt-8'>
           <button type='button' onClick={() => buy()} className="w-32 text-white bg-blue-700 hover:bg-blue-800 active:outline-none active:ring-4 active:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">Buy</button>
@@ -108,4 +110,4 @@ const Order = () => {
   )
 }
 
-export default Order
+export default Payment
