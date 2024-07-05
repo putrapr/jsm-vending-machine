@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import api from '../../config/api'
+import Swal from 'sweetalert2'
 
 const Order = () => {
   const { id } = useParams()
   const [product, setProduct] = useState({})
   const [moneys, setMoneys] = useState([])
   const [totalMoney, setTotalMoney] = useState(0)
+  const navigate = useNavigate()
 
   const getProduct = async () => {
     try {
@@ -25,12 +27,28 @@ const Order = () => {
 
   const getTotal = () => {
     let sum = 0
-    console.log(moneys)
     moneys.forEach( item => { sum += item })
-    console.log(sum)
     setTotalMoney(sum)
   }
   
+  const buy = async () => {
+    if (totalMoney < product.price)
+      Swal.fire({
+        icon: 'error',
+        text: "Sorry, you don't have enough money",
+      })
+    else {
+      const response = await api.get('/product/'+id)
+      const stock = { stock: response.data.stock - 1 }
+      api.patch('/product/'+id, stock)
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Payment Successful',
+      })
+      navigate('/')
+    }
+  }
 
   useEffect(() => {
     getProduct()
@@ -44,9 +62,9 @@ const Order = () => {
   return (
     <main className="h-screen flex gap-12 py-12 bg-[url('../img/home/bg.webp')] bg-cover bg-center">
       <div className='w-1/2 flex justify-end'>
-        <div className='flex flex-col items-center border p-4 bg-gray-800 bg-opacity-90'>
+        <div className='w-96 flex flex-col items-center border p-4 bg-gray-800 bg-opacity-90'>
           <img src={product?.img_url} alt="order snack" className='w-72' />
-          <h1 className='font-semibold text-3xl text-white mt-4'>{product?.title}</h1>
+          <h1 className='font-semibold text-3xl text-white mt-4 text-center'>{product?.title}</h1>
           <h3 className='mt-4 text-gray-100'>Price: Rp.{product?.price}</h3>          
         </div>
       </div>
@@ -83,7 +101,7 @@ const Order = () => {
           <h3 className='text-white'>My amount of money: {totalMoney}</h3>
         </div>
         <div className='w-full flex justify-center mt-8'>
-          <Link to='/' className="w-32 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">Buy</Link>
+          <button type='button' onClick={() => buy()} className="w-32 text-white bg-blue-700 hover:bg-blue-800 active:outline-none active:ring-4 active:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">Buy</button>
         </div>
       </div>
     </main>

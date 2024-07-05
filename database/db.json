@@ -1,15 +1,15 @@
 {
   "product": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Slai Olai Roll Blueberry",
       "weight": "128gr",
-      "stock": 2,
+      "stock": 1,
       "price": 6000,
       "img_url": "https://res.cloudinary.com/dzpf9unc5/image/upload/v1719933734/jsm/slai-olai_ey5ztl.webp"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Qtela Barbeque",
       "weight": "60gr",
       "stock": 10,
@@ -17,15 +17,15 @@
       "img_url": "https://res.cloudinary.com/dzpf9unc5/image/upload/v1719933734/jsm/qtela_ys0ytq.webp"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Oreo Ice Cream Blueberry ",
       "weight": "133gr",
-      "stock": 10,
+      "stock": 9,
       "price": 10000,
       "img_url": "https://res.cloudinary.com/dzpf9unc5/image/upload/v1719934590/jsm/oreo_j9btpp.webp"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Tango Vanilla",
       "weight": "115gr",
       "stock": 10,
@@ -33,10 +33,10 @@
       "img_url": "https://res.cloudinary.com/dzpf9unc5/image/upload/v1719933734/jsm/tango_ua9nsn.webp"
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Cadbury Daily Milk",
       "weight": "65gr",
-      "stock": 5,
+      "stock": 4,
       "price": 15000,
       "img_url": "https://res.cloudinary.com/dzpf9unc5/image/upload/v1719933734/jsm/cadbury_bugifa.webp"
     }

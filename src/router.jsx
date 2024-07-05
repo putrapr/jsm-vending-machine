@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Order from './pages/Order'
-import Change from './pages/Change'
 
 const router = () => {
   return (
@@ -9,7 +8,6 @@ const router = () => {
       <Routes>
         <Route path="" element={<Home />} />
         <Route path="order/:id" element={<Order />} />
-        <Route path="change" element={<Change />} />
       </Routes>
     </BrowserRouter>
   )
