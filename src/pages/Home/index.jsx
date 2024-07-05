@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Card from '../../components/Card'
+import CardSoldOut from '../../components/CardSoldOut'
 import api from '../../config/api'
 
 const Home = () => {
@@ -25,8 +26,12 @@ const Home = () => {
       <div className='w-full flex flex-wrap justify-evenly gap-y-12 mt-8'>
         {
           products?.map((item, index) => (
-            <div key={index}>
-              <Card data={item} />            
+            <div key={index} className={(item.stock == 0) ? 'grayscale': ''}>
+              {
+                (item.stock == 0) ?
+                  <CardSoldOut data={item} />:
+                  <Card data={item}/>
+              }
             </div>
           ))
         }

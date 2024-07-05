@@ -39,8 +39,8 @@ const Order = () => {
       })
     else {
       const response = await api.get('/product/'+id)
-      const stock = { stock: response.data.stock - 1 }
-      api.patch('/product/'+id, stock)
+      const data = { stock: response.data.stock - 1 }           
+      api.patch('/product/'+id, data)
 
       Swal.fire({
         icon: 'success',
